@@ -1,0 +1,442 @@
+/* ==============================================================
+   SOLUTECH VMIS - STYLES
+   Order of this file: 1) variables + base  2) buttons  3) every section (mobile first)
+   4) mobile overrides (max-width:820px)  5) photos  6) desktop layout (min-width:821px)
+   ============================================================== */
+
+/* Police Manrope hébergée sur le site (aucune requête vers Google) */
+@font-face{font-family:Manrope;font-style:normal;font-weight:200 800;font-display:swap;src:url("../fonts/manrope-latin.woff2") format("woff2")}
+
+/* ==============================================================
+   1) VARIABLES + BASE (colours, reset, text defaults)
+   ============================================================== */
+/* Colours used everywhere: change them here */
+:root{--red:#e41f26;--dark:#1d1d1d;--light:#f4f4f4;--grey:#6b6b6b;--line:#e3e3e3}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Manrope,sans-serif;color:var(--dark);background:#fff;line-height:1.5}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+h1,h2,h3{text-transform:uppercase;line-height:1.1;font-weight:600}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.wrap{width:min(1180px,100% - 48px);margin-inline:auto}
+
+/* ==============================================================
+   2) HEADER + NAVIGATION (logo, menu links, "Demander un devis" button)
+   ============================================================== */
+header{position:sticky;top:0;z-index:20;background:#fff;display:flex;align-items:stretch;justify-content:space-between;height:68px;padding-left:24px;will-change:transform}
+.logo{display:flex;align-items:center;font-weight:800;font-size:15px;letter-spacing:.04em}
+nav{display:flex;align-items:stretch;gap:0;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.12em}
+nav a{position:relative;display:flex;align-items:center;padding:0 19px;transition:color .2s}
+nav a::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
+nav a:hover,nav a.active{color:var(--red)}
+nav a:hover::before,nav a.active::before{transform:scaleX(1)}
+/* Shared button style (.btn.orange / .btn.dark) + thin arrow drawn with a mask */
+.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:36px;padding:0 24px;height:100%;font-family:Manrope,sans-serif;font-size:13px;font-weight:700;font-style:normal;line-height:16.9px;text-transform:uppercase;letter-spacing:2px;transition:background .2s}
+.btn.orange{background:var(--red);color:#fff}
+.btn.dark{background:var(--dark);color:#fff}
+.btn.dark:hover{background:var(--red)}
+.btn.orange:hover{background:#b8161c}
+:root{--arrow:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='3 3 21 21'%3E%3Cpath d='M4 13.4 H23.1 M14.2 4.5 L23.1 13.4 L14.2 22.4' fill='none' stroke='black' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.btn::after{content:"";font-size:16px;width:.9em;height:.9em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat}
+/* Burger button of the mobile menu (hidden on desktop) */
+.burger{display:none;background:none;border:0;color:var(--dark);padding:0 20px;cursor:pointer;transition:color .2s}
+.burger:hover,.burger[aria-expanded=true]{color:var(--red)}
+
+/* ==============================================================
+   3) IMAGE PLACEHOLDERS (colour gradients, replaced by the real photos in section 5)
+   ============================================================== */
+.ph{background:linear-gradient(135deg,#d8401a 0%,#8d2a10 45%,#a9c9d4 46%,#6fa1b5 100%)}
+.ph.b{background:repeating-linear-gradient(60deg,#2c5b52 0 14px,#d9e6e0 14px 28px)}
+.ph.c{background:linear-gradient(180deg,#bfd9ec 0 45%,#6c9a4b 45% 70%,#2d6a8a 70%)}
+.ph.d{background:linear-gradient(120deg,#caa56a,#6b4a1f 40%,#e7d5b0 41%,#b58a4a)}
+.ph.laser{background:radial-gradient(circle at 45% 55%,#ff8a8e 0,#e41f26 6%,transparent 14%),linear-gradient(180deg,#2a2a2a,#0e0e0e)}
+
+/* ==============================================================
+   4) HERO (big title + image at the top of the page)
+   ============================================================== */
+.hero{position:relative;margin:0 0 0 18px;width:calc(100% - 36px);min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#a9d3dd 0,#7fb0bf 30%,#e8541c 31%,#b8340e 55%,#8c2509 100%)}
+.hero>*{position:relative}
+.hero .txt{padding:0 18px 28px;text-align:start}
+.hero h1{font-size:50px;font-weight:700;color:#fff;text-align:start;margin-bottom:16px}
+.hero p{font-size:17px;font-weight:700;color:#fff;text-align:start;text-transform:uppercase;letter-spacing:.04em}
+.hero .desc{margin-top:6px}
+.hero .btn{align-self:flex-end;width:270px;height:44px}
+/* ==============================================================
+   INTRO ("Votre partenaire pour vos projets industriels" + "Nous contacter" link)
+   ============================================================== */
+.intro{text-align:center;padding:110px 24px 120px;display:flex;flex-direction:column;align-items:center}
+.intro h2{font-size:35px;font-weight:700;color:#000;text-align:center;margin-bottom:18px}
+.intro p{font-size:19px;font-weight:700;color:rgba(0,0,0,.8);text-align:center;max-width:440px;margin-bottom:36px}
+.intro h2{font-size:35px;font-weight:700;color:#000;text-align:center;margin-bottom:18px}
+.intro p{font-size:19px;font-weight:700;color:rgba(0,0,0,.8);text-align:center;max-width:440px;margin-bottom:36px}
+.contact-link{display:block;text-align:center;margin:0 auto;font-family:Manrope,sans-serif;font-size:13px;font-weight:700;font-style:normal;line-height:16.9px;text-transform:uppercase;letter-spacing:2px;width:max-content;color:#000;padding-bottom:4px;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;transition:color .2s}
+.contact-link:hover{color:var(--red);animation:underlineMove .7s ease}
+@keyframes underlineMove{
+ 0%{background-position:0 100%;background-size:100% 1px}
+ 49%{background-position:100% 100%;background-size:0 1px}
+ 50%{background-position:0 100%;background-size:0 1px}
+ 100%{background-position:0 100%;background-size:100% 1px}}
+
+/* ==============================================================
+   EQUIPMENT ("Nos équipements industriels": 4 cards that stack while scrolling)
+   ============================================================== */
+.equip{--h2:35px;--card-h:clamp(300px,24.5vw,480px);--peek:35px;--inset:clamp(12px,1.75vw,32px);--top:calc(24px + var(--h2) * 2.1 + 28px + var(--peek));background:var(--red);margin:0 18px;padding:24px 18px 90px;color:#fff;position:relative}
+/* title pinned at the top while the cards stack below it */
+.equip h2{font-size:35px;font-weight:700;color:#fff;text-align:start;line-height:1.05;height:calc(var(--h2) * 2.1);margin:0 0 calc(28px + var(--peek) + var(--card-h));position:sticky;top:24px;z-index:6;background:var(--red)}
+.js .equip h2{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.js .equip h2.in{opacity:1;transform:none}
+.cards{position:relative;display:flow-root;margin-top:calc(-1 * (var(--peek) + var(--card-h)))}
+/* peach tab behind the cards: pinned just above them, a bit narrower */
+.cards::before{content:"";display:block;position:sticky;top:calc(var(--top) - var(--peek));height:var(--peek);margin:0 var(--inset);background:rgba(255,255,255,.7)}
+/* all cards: same size, stacked at the same spot while scrolling */
+.card{position:sticky;top:var(--top);height:var(--card-h);background:#fff;color:var(--dark);display:grid;grid-template-columns:1fr 1.05fr}
+.card+.card{margin-top:45vh}
+.cards::after{content:"";display:block;height:20vh}
+.card .t{padding:0 clamp(28px,4.7vw,90px);display:flex;flex-direction:column;justify-content:center}
+.card h3{font-size:24px;font-weight:700;color:#000;text-align:start;margin-bottom:14px}
+.card p{font-size:16px;font-weight:400;color:rgba(0,0,0,.8);text-align:start;margin-bottom:22px;max-width:360px}
+.card a{align-self:flex-start;text-align:center;font-family:Manrope,sans-serif;font-size:13px;font-weight:700;font-style:normal;line-height:16.9px;text-transform:uppercase;letter-spacing:2px;padding-bottom:4px;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;transition:color .2s}
+.card a{display:inline-flex;align-items:center;gap:1.6em}
+.card a::after{content:"";width:1.3em;height:1.3em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat}
+.card a:hover{color:var(--red);animation:underlineMove .7s ease}
+.card .ph{margin:calc(var(--card-h) * .13) 0;min-height:0}
+
+/* ==============================================================
+   PROCESS ("De votre besoin à la solution": 6 steps + the drill and the lines)
+   ============================================================== */
+.process{padding:90px 0 90px;position:relative}
+.process .ptitle{width:min(1180px,100% - 48px);margin:0 auto 70px;padding-left:18%;font-size:clamp(31px,4vw,44px);font-weight:600}
+.track{position:relative;padding-bottom:80px}
+.pline{position:absolute;left:50%;top:0;bottom:20px;width:1px;background:#d4d4d4;transform:translateX(-.5px)}
+.pline-o{position:absolute;left:50%;bottom:20px;width:2px;margin-left:-1px;height:60px;background:var(--red);z-index:1}
+.tool{position:absolute;left:50%;top:0;width:81px;height:304px;margin-left:-41px;will-change:transform;z-index:2;pointer-events:none}
+.tool img{width:100%;height:100%;display:block}
+.toolwrap{display:contents}
+.steps{display:flex;flex-direction:column;gap:90px;position:relative;padding-top:55px}
+.step{width:34%}
+.step:nth-child(odd){margin-left:6%}
+.step:nth-child(even){margin-left:58%}
+.step h4{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px}
+.step p{font-family:Manrope,sans-serif;font-size:14px;font-weight:400;font-style:normal;line-height:19.6px;letter-spacing:normal;color:var(--grey);max-width:300px}
+
+/* ==============================================================
+   BANNER ("Une réponse adaptée à chaque projet" + laser image)
+   ============================================================== */
+.banner{background:var(--light);margin:0 18px;padding:28px 18px 0}
+.banner h2{font-size:35px;font-weight:700;color:#000;text-align:start;margin-bottom:8px}
+.banner p{font-size:16px;font-weight:400;text-align:start;color:var(--grey);margin-bottom:12px}
+.banner .row{display:flex;justify-content:space-between;align-items:flex-end}
+.banner .btn{width:270px;height:46px;flex-shrink:0;font-size:13px;font-weight:700;text-align:start}
+.banner .ph{height:230px;margin:0 -18px}
+
+/* ==============================================================
+   EXIGENCES ("Exigences industrielles": 4 columns with icons)
+   ============================================================== */
+.exig{padding:clamp(70px,10vw,155px) calc(4.95vw - 18px) 0;margin:0 18px}
+.exig h2{font-size:clamp(30px,3.6vw,64px);line-height:1.1;margin-bottom:clamp(30px,2.75vw,44px)}
+.cols{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #ececec;border-bottom:1px solid #ececec}
+.col{padding:clamp(40px,5.35vw,84px) clamp(20px,2.2vw,34px) 40px;min-height:clamp(240px,24vw,380px);border-right:1px solid #ececec;font-size:clamp(15px,1.17vw,19px);line-height:1.45;color:#4a4a4a}
+.col:last-child{border:0}
+.col b{display:block;color:var(--dark);font-weight:500;font-size:inherit}
+.ico{display:block;width:clamp(48px,4.45vw,70px);height:clamp(48px,4.45vw,70px);margin:0 0 clamp(8px,1.1vw,18px) -.65vw}
+
+/* ==============================================================
+   PROS ("Professionnels de l'industrie": dark panel + orange panel)
+   ============================================================== */
+.pros{display:grid;grid-template-columns:1.2fr 1fr;margin:clamp(40px,6vw,90px) 18px 0;min-height:260px}
+.pros .l{background:var(--dark);color:#fff;padding:28px 18px}
+.pros .l h2{font-size:clamp(29px,3.6vw,37px);font-weight:500}
+.pros .l{display:flex;flex-direction:column;justify-content:space-between;gap:30px}
+.targets{list-style:none;display:flex;flex-wrap:wrap;gap:6px 0;font-size:14px;color:#d6d6d6;max-width:460px}
+.targets li:not(:last-child)::after{content:"•";margin:0 10px;color:var(--red)}
+.pros .r p.lead{font-size:clamp(17px,4.6vw,24px);font-weight:500;line-height:1.35;margin:0}
+.pros .r{background:var(--red);color:#fff;padding:28px 36px;display:flex;flex-direction:column;justify-content:flex-end}
+.pros .r h3{font-size:clamp(20px,2.4vw,26px);font-weight:600;margin-bottom:12px}
+.pros .r p{font-size:15px;max-width:380px}
+
+/* ==============================================================
+   FAQ ("Mieux comprendre vos équipements": questions that open and close)
+   ============================================================== */
+.faq{padding:90px 18px 90px;margin:0 18px}
+.faq h2{font-size:clamp(29px,3.6vw,37px);margin-bottom:40px}
+.faq details{border-top:1px solid var(--line);padding:18px 0}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;font-weight:600;font-size:16px;list-style:none;display:flex;justify-content:space-between}
+.faq summary::after{content:"+";font-size:22px;line-height:1;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{font-size:14px;color:var(--grey);margin-top:12px;max-width:620px}
+
+/* ==============================================================
+   CONTACT ("Parlons de votre projet": text on the left, form on the right)
+   ============================================================== */
+.contact{display:grid;grid-template-columns:1fr 1.4fr;margin:0 18px;background:var(--light)}
+.contact .l{padding:70px 18px}
+.contact h2{font-size:clamp(29px,3.6vw,37px);font-weight:500}
+.contact .l ul{list-style:none;margin-top:30px;font-size:12px}
+.contact .l li{display:flex;gap:10px;margin-bottom:12px}
+.contact .l li::before{content:"✓";color:var(--red);font-weight:800}
+form{background:#fff;padding:60px 30px 40px;display:grid;grid-template-columns:1fr 1fr;gap:20px 24px}
+label{font-family:Manrope,sans-serif;font-size:14px;font-weight:400;font-style:normal;line-height:18.2px;letter-spacing:normal;display:flex;flex-direction:column;gap:6px}
+label.full{grid-column:1/-1}
+input,select,textarea,button{font-family:Manrope,sans-serif}
+input,select,textarea{font:inherit;font-family:Manrope,sans-serif;font-size:12px;padding:10px;border:1px solid var(--line);background:#fff;border-radius:2px;width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--red);outline:0}
+textarea{min-height:72px;resize:vertical}
+form .btn{grid-column:1;width:200px;height:42px;justify-self:start;gap:18px;border:0;cursor:pointer;font-family:inherit}
+#msg{grid-column:1/-1;font-size:13px;color:var(--red);font-weight:600;min-height:16px}
+
+/* ==============================================================
+   FOOTER
+   ============================================================== */
+footer{background:#e9eaec;margin:0 18px;padding:40px 18px 24px;display:grid;grid-template-columns:1fr 1.3fr;gap:30px}
+footer .brand{font-size:11px;font-weight:700}
+footer .brand i{display:block;width:90px;height:110px;margin-top:70px;background:linear-gradient(135deg,#c8cdd2,#7d848b);clip-path:polygon(20% 0,100% 20%,100% 100%,0 80%)}
+footer h3{font-size:16px;font-weight:600;max-width:420px;margin-bottom:50px}
+.fcols{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;font-size:12px}
+.fcols span{color:var(--grey);display:block;margin-bottom:6px}
+.fcols a{display:block;font-family:Manrope,sans-serif;font-size:16px;font-weight:700;font-style:normal;line-height:22.4px;letter-spacing:normal;margin-bottom:4px}
+.fcols div:nth-child(2) a{letter-spacing:2px}
+.copy{grid-column:2;font-size:11px;color:var(--grey)}
+
+/* ==============================================================
+   MOBILE OVERRIDES (screens up to 820px wide)
+   ============================================================== */
+@media(max-width:820px){
+ .hero{min-height:560px}
+ .hero .txt{padding:0 22px 30px}
+ .hero h1{font-size:clamp(37px,10vw,50px);font-weight:700;margin-bottom:18px}
+ .hero .loc{font-size:clamp(19px,4.6vw,22px);font-weight:700;letter-spacing:0;margin-bottom:18px}
+ .hero .desc{font-size:clamp(18px,4.4vw,21px);font-weight:700;letter-spacing:-.01em;line-height:1.2;margin-top:0}
+ .hero .btn{align-self:stretch;width:100%;height:64px;padding:0 26px}
+ .hero .btn::after{font-size:29px}
+ .banner .row{align-items:stretch;gap:22px}
+ .banner .btn{align-self:stretch;width:calc(100% + 36px);margin:0 -18px;height:64px;padding:0 26px;font-size:clamp(16px,4.2vw,19px);letter-spacing:.16em}
+ .banner .btn::after{font-size:29px}
+ nav{display:none;position:absolute;top:68px;left:0;right:0;background:#fff;flex-direction:column;padding:20px;gap:18px}
+ nav a{padding:0}
+ nav a::before{display:none}
+ nav.open{display:flex;animation:navIn .45s cubic-bezier(.22,.61,.36,1) both}
+ @keyframes navIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+ header>.btn{display:none}
+ .burger{display:block}
+ /* Titre de la section produits sur mobile : la taille suit la largeur de l'écran et le titre fait toujours 3 lignes,
+    donc il ne déborde plus sur la carte (hauteur réservée = 3 lignes) */
+ .equip{--h2:clamp(22px,calc((100vw - 72px) / 10.4),35px);--card-h:clamp(380px,calc(100vh - 220px),470px);--peek:24px;--top:calc(24px + var(--h2) * 3.15 + 28px + var(--peek))}
+ .equip h2{font-size:var(--h2);height:calc(var(--h2) * 3.15);width:10em;max-width:100%;text-wrap:balance}
+ .equip h2 br{display:none}
+ .card{grid-template-columns:1fr;grid-template-rows:42% 1fr}
+ .card+.card{margin-top:35vh}
+ .card .t{padding:0 24px}
+ .card .ph{margin:0;order:-1}
+ .pline,.pline-o,.tool{left:30px}
+ .tool{width:58px;height:218px;margin-left:-29px}
+ .pline-o{height:40px}
+ .step,.step:nth-child(odd),.step:nth-child(even){width:100%;margin-left:0;padding:0}
+ .steps{gap:40px;padding-left:72px}
+ .track{padding-bottom:60px}
+ .process .ptitle{padding-left:0;margin-bottom:40px}
+ .cols{grid-template-columns:1fr 1fr}
+ .pros,.contact,footer{grid-template-columns:1fr}
+ .copy{grid-column:1}
+ .banner .row{flex-direction:column;align-items:flex-start;gap:14px}
+ form{grid-template-columns:1fr}
+}
+/* Accessibility: no animations for people who asked their system for reduced motion */
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* ==============================================================
+   5) REAL PHOTOS (files are in the images/ folder; change the file names here to swap a photo)
+   ============================================================== */
+.ph{background:#fff url("../images/ph-a.webp") center/contain no-repeat}
+.ph.b{background:#fff url("../images/ph-b.webp") center/contain no-repeat}
+.ph.c{background:#fff url("../images/ph-c.webp") center/contain no-repeat}
+.ph.d{background:#fff url("../images/ph-d.webp") center/contain no-repeat}
+.ph.laser{background:url("../images/ph-laser.webp") center 75%/cover no-repeat}
+/* Dark overlay on the hero photo so the white text stays readable (change the .xx numbers to make it lighter or darker) */
+.hero::before{background:linear-gradient(180deg,rgba(0,0,0,.02) 0%,rgba(0,0,0,.10) 35%,rgba(0,0,0,.22) 100%),url("../images/hero-bg.webp") center/cover no-repeat}
+@media(min-width:821px){.hero::before{background:linear-gradient(90deg,rgba(0,0,0,.10) 0%,rgba(0,0,0,.03) 62%,rgba(0,0,0,0) 100%),linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.08) 35%,rgba(0,0,0,.20) 100%),url("../images/hero-bg.webp") center/cover no-repeat}}
+.hero h1,.hero p{text-shadow:0 1px 3px rgba(0,0,0,.45),0 2px 18px rgba(0,0,0,.6)}
+
+/* Footer photo (images/footer-profile.webp) */
+footer .brand i{display:block;width:clamp(200px,26vw,410px);aspect-ratio:718/706;height:auto;margin-top:clamp(24px,2.7vw,44px);background:url("../images/footer-profile.webp") center/contain no-repeat;clip-path:none}
+
+/* ==============================================================
+   6) DESKTOP LAYOUT (screens wider than 820px): everything below scales with the screen width (vw)
+   ============================================================== */
+/* ---------- Header + hero: large layout (scales with the screen, never below the previous sizes) ---------- */
+@media(min-width:821px){
+ header{height:clamp(68px,8.1vw,200px);height:round(clamp(68px,8.1vw,200px),1px);padding-left:2.36vw;padding-right:2.36vw}
+ .logo{font-size:clamp(15px,1.4vw,36px);letter-spacing:.01em}
+ nav{position:absolute;left:50%;top:0;bottom:0;transform:translateX(-50%);font-size:clamp(13px,1.05vw,26px);letter-spacing:.16em;white-space:nowrap}
+ nav a{padding:0 clamp(14px,1.05vw,28px)}
+ nav a::before{top:clamp(0px,.75vw,18px);height:clamp(5px,.3vw,8px)}
+ header>.btn.orange{align-self:flex-end;height:clamp(44px,6.76vw,170px);height:round(clamp(44px,6.76vw,170px),1px);width:clamp(190px,20vw,480px);padding:0 clamp(18px,1.6vw,40px);font-size:clamp(13px,1.1vw,28px);letter-spacing:.14em;line-height:1.3;gap:0;white-space:nowrap}
+ header>.btn.orange::after{font-size:clamp(16px,1.5vw,36px)}
+ .hero{margin:0 2.36vw;width:auto;min-height:clamp(420px,45vw,1000px)}
+ .hero .txt{padding:0 2.4vw clamp(28px,4.7vw,120px)}
+ .hero h1{font-size:clamp(50px,5.5vw,140px);letter-spacing:-.015em;margin-bottom:clamp(16px,2.6vw,64px)}
+ .hero p{font-size:clamp(17px,1.47vw,38px);letter-spacing:0}
+ .hero .loc{margin-bottom:clamp(8px,1.3vw,32px)}
+ .hero .desc{margin-top:0}
+ .hero .btn{width:clamp(270px,31.3vw,760px);height:clamp(44px,6.76vw,170px);padding:0 clamp(18px,2.4vw,60px);font-size:clamp(13px,1.1vw,28px);letter-spacing:.14em;line-height:1.3}
+ .hero .btn::after{font-size:clamp(16px,1.5vw,36px)}
+ .equip,.banner,.exig,.faq,.contact,footer{margin-left:2.36vw;margin-right:2.36vw}
+}
+/* ---------- Equipment section: large layout (scales with the screen) ---------- */
+@media(min-width:821px){
+ .equip{--h2:clamp(35px,3.7vw,96px);--gap:clamp(28px,1.9vw,48px);--pt:clamp(24px,2.4vw,60px);--card-h:clamp(300px,25.6vw,640px);--peek:clamp(35px,2.45vw,64px);--inset:clamp(12px,1.63vw,42px);--top:calc(var(--pt) + var(--h2) * 2.6 + var(--gap) + var(--peek));padding-top:var(--pt);padding-left:clamp(18px,2.4vw,60px);padding-right:clamp(18px,2.4vw,60px)}
+ .equip h2{font-size:var(--h2);line-height:1.3;height:calc(var(--h2) * 2.6);margin-bottom:calc(var(--gap) + var(--peek) + var(--card-h));top:var(--pt)}
+ .card .t{padding:0 clamp(28px,4.7vw,120px)}
+ .card h3{font-size:clamp(24px,2.7vw,70px);line-height:1.1;margin-bottom:clamp(14px,1.3vw,34px)}
+ .card p{font-size:clamp(16px,1.2vw,30px);margin-bottom:clamp(22px,1.7vw,44px);max-width:clamp(360px,24vw,620px)}
+ .card a{font-size:clamp(13px,.85vw,22px);line-height:1.3;letter-spacing:.14em;padding-bottom:clamp(4px,.3vw,8px)}
+}
+/* ---------- Process section: large typography (scales with the screen) ---------- */
+@media(min-width:821px){
+ .process .ptitle{width:auto;max-width:none;margin:0 0 clamp(60px,5vw,130px);padding:0 2.4vw 0 22vw;font-size:clamp(31px,3.7vw,96px);font-weight:700;line-height:1.25;text-transform:uppercase}
+ .step h4{font-size:clamp(14px,1.4vw,36px);letter-spacing:0;margin-bottom:clamp(8px,1.1vw,28px)}
+ .step p{font-size:clamp(14px,1.06vw,27px);line-height:1.45;max-width:clamp(300px,27vw,700px)}
+}
+/* ---------- Banner section: large layout (scales with the screen) ---------- */
+@media(min-width:821px){
+ .banner{--bp:clamp(18px,2.5vw,64px);padding:clamp(28px,4.4vw,110px) 0 0 var(--bp)}
+ .banner h2{font-size:clamp(31px,3.7vw,96px);line-height:1.3;text-transform:uppercase;margin-bottom:clamp(24px,3.2vw,80px)}
+ .banner p{font-size:clamp(16px,1.2vw,30px);line-height:1.55;margin-bottom:0;max-width:clamp(360px,41vw,1000px)}
+ .banner .row>div{padding-bottom:clamp(40px,7vw,175px)}
+ .banner .btn{width:clamp(270px,32.7vw,820px);height:clamp(46px,5.5vw,140px);padding:0 var(--bp);font-size:clamp(13px,.9vw,24px);letter-spacing:.14em;text-transform:uppercase}
+ .banner .btn::after{font-size:clamp(16px,1.4vw,34px)}
+ .banner .ph{margin:0 0 0 calc(-1 * var(--bp));height:clamp(230px,31.7vw,800px)}
+}
+/* ---------- Exigences section: large layout (scales with the screen) ---------- */
+@media(min-width:821px){
+ .exig{padding:clamp(70px,10vw,260px) 2.14vw 0}
+ .exig h2{font-size:clamp(30px,3.7vw,96px);line-height:1.3;text-transform:uppercase;margin-bottom:clamp(30px,4vw,100px)}
+ .col{--ico:clamp(48px,4.4vw,110px);padding:clamp(40px,6vw,150px) clamp(20px,2.4vw,60px) 40px;min-height:clamp(240px,22.8vw,570px);font-size:clamp(15px,1.2vw,30px)}
+ .ico{width:var(--ico);height:var(--ico);margin-bottom:clamp(8px,1.1vw,28px)}
+}
+/* ---------- Professionnels section: large layout (scales with the screen) ---------- */
+@media(min-width:821px){
+ .pros{grid-template-columns:1.47fr 1fr;margin-top:clamp(40px,10.5vw,270px);min-height:clamp(260px,33vw,820px)}
+ .pros .l{justify-content:flex-start;gap:clamp(30px,2.8vw,70px);padding:clamp(28px,7.8vw,200px) 2.4vw clamp(28px,4.8vw,120px)}
+ .pros .l h2{font-size:clamp(29px,3.7vw,96px);font-weight:600;line-height:1.3;text-transform:uppercase;margin:0}
+ .targets{font-size:clamp(14px,1.2vw,30px);line-height:1.5;color:#e4e4e4;max-width:45vw;gap:0;padding-bottom:clamp(30px,4.6vw,115px);border-bottom:1px solid #3d3d3d}
+ .targets li:not(:last-child)::after{margin:0 clamp(8px,.55vw,14px);color:#fff}
+ .pros .r{justify-content:center;padding:clamp(28px,2.4vw,60px) clamp(24px,4.7vw,120px) clamp(28px,2.4vw,60px) clamp(28px,6.7vw,170px)}
+ .pros .r h3{font-size:clamp(20px,2vw,52px);margin-bottom:clamp(12px,1vw,26px)}
+ .pros .r p.lead{font-size:clamp(17px,1.65vw,42px);font-weight:400;line-height:1.4;max-width:none;margin:0}
+}
+/* ---------- FAQ section: large layout (scales with the screen) ---------- */
+@media(min-width:821px){
+ .faq{padding:clamp(70px,10.5vw,270px) 2.14vw clamp(90px,8vw,200px)}
+ .faq h2{font-size:clamp(29px,3.7vw,96px);font-weight:600;line-height:1.3;text-transform:uppercase;margin-bottom:clamp(40px,10.5vw,270px)}
+ .faq details{padding:clamp(18px,1.6vw,40px) 0}
+ .faq summary{font-size:clamp(16px,1.4vw,36px)}
+ .faq summary::after{font-size:clamp(22px,2vw,50px)}
+ .faq details p{font-size:clamp(14px,1.1vw,28px);margin-top:clamp(12px,1vw,26px);max-width:clamp(620px,42vw,1050px)}
+}
+/* ---------- Contact section: large layout (scales with the screen) ---------- */
+@media(min-width:821px){
+ .contact{grid-template-columns:1fr 1.47fr}
+ .contact .l{padding:clamp(70px,10.5vw,270px) 2.4vw clamp(40px,4vw,100px)}
+ .contact h2{font-size:clamp(29px,3.7vw,96px);font-weight:600;line-height:1.3;text-transform:uppercase}
+ .contact h2.sub{margin-top:clamp(14px,1.5vw,40px)!important;font-size:clamp(22px,2.8vw,72px)!important;font-weight:600}
+ .contact .l ul{margin-top:clamp(30px,4.8vw,120px);font-size:clamp(14px,1.25vw,32px);line-height:1.4}
+ .contact .l li{align-items:center;gap:clamp(10px,2.2vw,56px);margin-bottom:clamp(12px,2.1vw,54px)}
+ .contact .l li::before{font-size:clamp(16px,1.5vw,38px)}
+ form{padding:clamp(40px,5.4vw,140px) 7.9vw clamp(40px,5vw,130px) 5.4vw;gap:clamp(20px,2vw,50px) clamp(24px,2.4vw,60px);align-content:start}
+ label{font-size:clamp(14px,1.2vw,30px);line-height:1.3;gap:clamp(6px,.65vw,16px);color:#222}
+ input,select,textarea{font-size:clamp(12px,1vw,26px);padding:clamp(10px,1.25vw,32px);border-radius:0;border-color:#e8e8e8}
+ input::placeholder,textarea::placeholder{color:#777}
+ select{color:#000}
+ textarea{min-height:clamp(72px,8.2vw,210px)}
+ form .btn{width:clamp(200px,14vw,360px);height:clamp(42px,4.2vw,106px);font-size:clamp(13px,.95vw,24px);letter-spacing:.14em}
+ #msg{font-size:clamp(13px,.95vw,24px)}
+}
+/* Red check icon of the list in the contact section (drawn as an inline SVG so it works when the file is opened locally) */
+.contact .l li::before{content:"";flex:none;width:18px;height:13px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 25 18'%3E%3Cpath d='M1.8 9.5 L7.5 15.5 L23 2' fill='none' stroke='%23e41f26' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+/* ---------- Buttons: thin arrow + larger form button (desktop) ---------- */
+@media(min-width:821px){
+ .btn::after{content:"";width:.9em;height:.9em;font-size:inherit;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='3 3 21 21'%3E%3Cpath d='M4 13.4 H23.1 M14.2 4.5 L23.1 13.4 L14.2 22.4' fill='none' stroke='black' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='3 3 21 21'%3E%3Cpath d='M4 13.4 H23.1 M14.2 4.5 L23.1 13.4 L14.2 22.4' fill='none' stroke='black' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+ header>.btn.orange::after{font-size:clamp(16px,1.5vw,36px)}
+ .hero .btn::after{font-size:clamp(16px,1.5vw,36px)}
+ .banner .btn::after{font-size:clamp(16px,1.4vw,34px)}
+ .contact .l li::before{width:clamp(18px,1.35vw,34px);height:clamp(13px,.97vw,24px)}
+ form{border:1px solid #ececec;border-left:0}
+ form .btn{width:clamp(200px,24vw,600px);height:clamp(42px,5.45vw,138px);padding:0 clamp(18px,2.5vw,64px);justify-content:space-between;font-size:clamp(13px,1vw,25px);letter-spacing:.14em}
+ form .btn::after{font-size:clamp(16px,1.4vw,36px)}
+}
+/* ---------- Footer: large layout (scales with the screen) ---------- */
+@media(min-width:821px){
+ footer{grid-template-columns:1fr 1.25fr;gap:0 2.4vw;padding:clamp(40px,8vw,200px) 2.4vw clamp(30px,3vw,80px)}
+ footer .brand{grid-row:1/3;font-size:clamp(11px,1.15vw,30px);line-height:3.5vw;letter-spacing:-.01em}
+ footer .brand span{font-size:clamp(12px,1.3vw,34px)}
+ footer .brand i{width:clamp(90px,27vw,700px);height:clamp(110px,27vw,700px);margin-top:clamp(30px,3vw,80px)}
+ footer h3{font-size:clamp(16px,1.8vw,46px);line-height:1.3;text-transform:uppercase;max-width:46vw;margin:.6vw 0 clamp(50px,10vw,250px)}
+ .fcols{gap:clamp(20px,4.8vw,120px);font-size:clamp(12px,1.25vw,32px)}
+ .fcols span{color:#333;margin-bottom:clamp(6px,1.5vw,38px)}
+ .fcols a{font-size:clamp(16px,1.3vw,33px);line-height:1.4;margin-bottom:0}
+ .fcols div:nth-child(2) a{letter-spacing:.12em;line-height:1.75;font-weight:600}
+ .copy{grid-row:2;align-self:end;font-size:clamp(11px,1.07vw,27px);line-height:1.45;color:#333;max-width:15vw;padding-bottom:clamp(0px,2.4vw,60px)}
+}
+/* ---------- Intro section: large layout (scales with the screen) ---------- */
+@media(min-width:821px){
+ .intro{padding:clamp(70px,13vw,330px) 2.4vw clamp(60px,10.4vw,270px)}
+ .intro h2{font-size:clamp(29px,3.7vw,96px);font-weight:600;line-height:1.3;text-transform:uppercase;margin-bottom:clamp(14px,1vw,26px)}
+ .intro p{font-size:clamp(16px,1.75vw,44px);font-weight:600;line-height:1.3;text-transform:uppercase;color:#333;max-width:68vw;margin-bottom:clamp(30px,3vw,76px)}
+ .contact-link{display:flex;align-items:center;gap:clamp(14px,1.6vw,40px);font-size:clamp(13px,1.07vw,27px);line-height:1.3;letter-spacing:.14em;padding-bottom:clamp(4px,.45vw,12px);background:linear-gradient(var(--red),var(--red)) 0 100%/100% 2px no-repeat}
+ .contact-link::after{content:"";width:1.3em;height:1.3em;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat}
+}
+/* ---------- Drill detail: orange line starts at the rotor shaft end and runs past the end of the section ---------- */
+@media(min-width:821px){
+ .process{--tw:clamp(72px,min(6.9vw,13vh),220px);--tail:clamp(4px,.48vw,12px);--out:clamp(10px,1.45vw,36px);padding-bottom:0;z-index:2}
+ .track{padding-bottom:0}
+ .steps{padding-bottom:clamp(80px,14vw,360px)}
+ .steps{gap:0}
+ .step:nth-child(even){margin-top:4vw}
+ .step:nth-child(odd):not(:first-child){margin-top:7.8vw}
+ .toolwrap{display:block;position:absolute;top:0;bottom:var(--tail);left:50%;width:0}
+ .tool{position:sticky;top:3.6vh;left:auto;width:var(--tw);height:calc(var(--tw) * 3.756);margin-left:calc(var(--tw) / -2);transform:none!important}
+ .pline-o{bottom:calc(var(--out) * -1);height:calc(var(--tw) * .244 + var(--tail) + var(--out));width:clamp(2px,.14vw,4px);margin-left:calc(clamp(2px,.14vw,4px) / -2)}
+ .pline{bottom:calc(var(--tw) * .244 + var(--tail))}
+}
+@media(prefers-reduced-motion:reduce){header{transition:none}nav.open{animation:none}}
+
+/* ---------- Logo image (replaces the text logo in the header) ---------- */
+.logo img{height:40px;width:auto;max-width:none}
+@media(min-width:821px){
+ .logo img{height:clamp(40px,4.6vw,110px)}
+}
+
+/* ---------- Logo image in the footer ---------- */
+footer .brand .flogo{height:44px;width:auto;max-width:100%}
+@media(min-width:821px){
+ footer .brand .flogo{height:clamp(44px,5vw,120px)}
+}
+
+/* ---------- Hero: longer title + description (sized to fit) ---------- */
+.hero h1{font-size:clamp(26px,7vw,34px);line-height:1.15;max-width:760px}
+.hero .desc{font-size:15px;font-weight:500;text-transform:none;letter-spacing:0;line-height:1.5;max-width:640px}
+@media(max-width:820px){
+ .hero h1{font-size:clamp(24px,7vw,32px)}
+ .hero .desc{font-size:clamp(14px,3.8vw,17px);font-weight:500;letter-spacing:0;line-height:1.45}
+}
+@media(min-width:821px){
+ .hero h1{font-size:clamp(32px,3.6vw,92px);letter-spacing:-.01em;max-width:min(60vw,1500px)}
+ .hero .desc{font-size:clamp(15px,1.25vw,32px);font-weight:500;max-width:min(52vw,1300px);line-height:1.5}
+}
+
+/* moved from inline styles (required by the strict Content-Security-Policy) */
+.cols .col:nth-child(1) .ico{margin-left:calc(var(--ico) * -0.14)}
+.cols .col:nth-child(2) .ico{margin-left:calc(var(--ico) * -0.10)}
+.cols .col:nth-child(3) .ico{margin-left:calc(var(--ico) * -0.17)}
+.cols .col:nth-child(4) .ico{margin-left:calc(var(--ico) * -0.18)}
+.contact .l h2.sub2{margin-top:14px;font-size:clamp(22px,2.8vw,29px)}
+.hp{display:none}
+
+/* ---------- Hero text near the TOP of the photo (desktop and responsive) ----------
+   margin-bottom:auto pushes the text to the top and keeps the button at the bottom.
+   padding-top = distance between the top of the photo and the first line of text: make it smaller to go higher, bigger to go lower. */
+.hero .txt{margin-bottom:auto;padding-top:34px;padding-bottom:0}
+@media(min-width:821px){.hero .txt{padding-top:clamp(28px,3.2vw,90px);padding-bottom:0}}

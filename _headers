@@ -1,0 +1,15 @@
+# Cloudflare Pages : en-têtes de sécurité envoyés avec chaque page.
+# Ce fichier doit rester à la racine du dossier publié (à côté de index.html).
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+  # Interdit d'afficher le site dans un cadre d'un autre site (la CSP de la page ne peut pas le faire).
+  # Elle s'ajoute à la CSP de index.html : c'est la règle la plus stricte qui s'applique.
+  Content-Security-Policy: frame-ancestors 'none'
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
